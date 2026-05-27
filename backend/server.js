@@ -46,18 +46,24 @@ connectDB();
 const io = new Server({
 cors:true,
 });
-
+const emailToSocketIdMap = new Map();
+const socketToEmailMap = new Map();
 io.on("connection", (socket) => {
     console.log("User Connected:", socket.id);
 
-    socket.on("disconnect", () => {
-        console.log("User Disconnected:", socket.id);
+    socket.on('room:join',(data)=>{
+     const {email,room}=data;
+     emailToSocketIdMap.set(email,socket.id);
+     socketToEmailMap.set(socket.id,email);
+     io.to(room).emit('user:joined',{email,Id:socket.id});
+     socket.join(room);
+     io.to(socket.id).emit('room:join',data);
     });
 });
 
 // Express Routes
 app.get("/", (req, res) => {
-    res.send("Backend Running");
+    res.send("Backend Running");    
 });
 
 // Start Express Server

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # .
 
 Created with **krito** - A modern full-stack scaffolding tool.
@@ -50,3 +51,7 @@ npm run dev
 │   └── server.js
 └── README.md
 ```
+=======
+# video-calling-app
+make group video calling application where multiple user can connect to each other
+>>>>>>> 9eba137364959d25595f93910d3fb32c76d15829
