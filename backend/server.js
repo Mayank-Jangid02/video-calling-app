@@ -59,6 +59,9 @@ io.on("connection", (socket) => {
      socket.join(room);
      io.to(socket.id).emit('room:join',data);
     });
+    socket.on('user:call',({to,offer})=>{
+        io.to(to).emit('incoming:call',{from:socket.id,offer});
+    });
 });
 
 // Express Routes

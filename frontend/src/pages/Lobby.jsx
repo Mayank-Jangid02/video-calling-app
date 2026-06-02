@@ -10,9 +10,7 @@ export default function lobby() {
     console.log(socket);
    const handlesubmit =  useCallback((e)=>{
     e.preventDefault();
-    socket.emit('join_room',{email,room});
-    // console.log(email,room);
-    handleJoinRoom({email,room});
+    socket.emit('room:join',{email,room});
    },[room,email,socket])
 
    const handleJoinRoom=useCallback((data)=>{
