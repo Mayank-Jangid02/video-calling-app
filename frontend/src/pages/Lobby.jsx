@@ -1,7 +1,7 @@
 import React,{useState,useEffect,useCallback} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {useSocket} from '../context/SocketProvider.jsx'
-export default function lobby() {
+export default function Lobby() {
 
     let [room, setRoom] = useState('');
     let [email, setEmail] = useState('');
